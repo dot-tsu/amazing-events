@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,111 @@
     <title>Home - Amazing Events</title>
     <link rel="icon" href="./assets/favicon.ico" type="image/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    display: ['Inter', 'sistem-ui', 'sans-serif'],
+                    body: ['Inter', 'sistem-ui', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#DC046C',
+                            50: '#FFEBF4',
+                            100: '#FFD6E9',
+                            200: '#FF99C9',
+                            300: '#FF5CA8',
+                            400: '#FF1F87',
+                            500: '#E00069',
+                            600: '#A3004C',
+                            700: '#660030',
+                            800: '#290013',
+                            900: '#14000A'
+                        },
+                        secondary: {
+                            DEFAULT: '#56CBF9',
+                            50: '#EBF9FE',
+                            100: '#D8F3FD',
+                            200: '#9EE1FA',
+                            300: '#64D0F7',
+                            400: '#2ABEF4',
+                            500: '#0B9FD5',
+                            600: '#08749B',
+                            700: '#054861',
+                            800: '#021D27',
+                            900: '#010E13'
+                        },
+                        dark: '#121417',
+                        light: '#FFF9FB'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
+
 <body>
-    
+    <nav class="bg-dark">
+        <div class="mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <img class="h-10 w-auto" src="./assets/Logo Amazing Events.png" alt="Amazing Events Logo">
+                    </a>
+                </div>
+                <div class="hidden md:block py-5">
+                    <div class="ml-10 flex items-baseline space-x-4 text-gray-300 px-3 rounded-md text-sm font-medium">
+                        <a href="#" class="hover:text-light ">Home</a>
+                        <a href="./upcomingEvents.html" class="hover:text-light">Upcoming Events</a>
+                        <a href="./pastEvents.html" class="hover:text-light">Past Events</a>
+                        <a href="./contact.html" class="hover:text-light">Contact</a>
+                        <a href="./stats.html" class="hover:text-light">Stats</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <!-- Mobile menu button -->
+                    <button type="button"
+                        class="bg-gray-700 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Icon when menu is closed. -->
+                        <!--
+                         Heroicon name: menu
+  
+                         Menu open: "hidden", Menu closed: "block"
+                        -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Icon when menu is open. -->
+                        <!--
+                         Heroicon name: x
+  
+                         Menu open: "block", Menu closed: "hidden"
+                        -->
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, toggle classes based on menu state. /NEEDS JS/ -->
+        <div class="md:hidden" id="mobile-menu">
+            <div class="text-gray-300 rounded-md text-base font-medium px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="hover:text-light block px-3 py-2">Home</a>
+                <a href="./upcomingEvents.html" class="hover:text-light block px-3 py-2">Upcoming Events</a>
+                <a href="./pastEvents.html" class="hover:text-light block px-3 py-2">Past Events</a>
+                <a href="./contact.html" class="hover:text-light block px-3 py-2">Contact</a>
+                <a href="./stats.html" class="hover:text-light block px-3 py-2">Stats</a>
+            </div>
+        </div>
+    </nav>
 </body>
+
 </html>
