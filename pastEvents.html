@@ -99,9 +99,10 @@
         <a href="./contact.html" class="text-right"><i class="bi bi-caret-right-fill hover:text-dark"></i></a>
     </header>
     <main>
+        <!-- Category Selector and Search -->
         <div class="mx-3 border-b-2 border-secondary-300">
-            <form class="grid grid-cols-2 gap-3 items-center m-5">
-                <div class="col-start-1 col-end-3 mx-5 flex flex-wrap">
+            <form class="sm:grid sm:grid-cols-2 sm:gap-3 items-center m-5">
+                <div class="col-start-1 col-end-3 mx-5 flex flex-wrap m-3">
                     <label class="mx-2 flex items-center">
                         <input type="checkbox" name="category1" id="category1"
                             class="form-checkbox text-primary h-5 w-5">
@@ -128,7 +129,7 @@
                         <span class="ml-2 text-secondary-300 font-medium">Category</span>
                     </label>
                 </div>
-                <div class="col-start-3 col-end-4">
+                <div class="col-start-3 col-end-4 text-center">
                     <input
                         class="border border-secondary-400 bg-dark py-2 px-5 rounded-lg text-light focus:outline-none focus:ring-1 focus:ring-primary-400 focus:border-transparent"
                         type="text" name="search" id="search" placeholder="Search...">
