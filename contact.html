@@ -102,10 +102,39 @@
         <h1 class="font-semibold text-center">Contact</h1>
         <a href="./stats.html" class="text-right"><i class="bi bi-caret-right-fill hover:text-dark"></i></a>
     </header>
-    <main></main>
+    <main>
+        <!-- Contact Us Form -->
+        <form action="#" class="w-full md:w-1/2 p-6 sm:mx-auto my-[5vh]">
+            <div>
+                <div class="flex flex-col mb-3">
+                    <label for="name">Name: </label>
+                    <input type="text" id="name"
+                        class="px-3 py-2 bg-dark border border-secondary rounded focus:border-primary-500 focus:outline-none focus:text-light transition-color ease-in duration-200"
+                        required>
+                </div>
+                <div class="flex flex-col mb-3">
+                    <label for="email">Email</label>
+                    <input type="text" id="email"
+                        class="px-3 py-2 bg-dark border border-secondary rounded focus:border-primary-500 focus:outline-none focus:text-light transition-color ease-in duration-200"
+                        required>
+                </div>
+                <div class="flex flex-col mb-3">
+                    <label for="message">Message</label>
+                    <textarea rows="4" id="message"
+                        class="px-3 py-2 bg-dark border border-secondary rounded focus:border-primary-500 focus:outline-none focus:text-light transition-color ease-in duration-200"></textarea>
+                </div>
+            </div>
+            <div class="w-full pt-3 text-right">
+                <button type="submit"
+                    class="font-bold w-40 px-3 py-2 bg-secondary text-dark rounded text-xl hover:bg-primary hover:text-light cursor-pointer transition ease-out delay-100">
+                    Send
+                </button>
+            </div>
+        </form>
+    </main>
     <footer class="flex text-center bg-dark font-bold sm:text-lg p-1">
         <ul class="flex grow justify-start">
-            <!-- Faltan links -->
+            <!-- Needs Links -->
             <li class="mx-2 self-center"><a href=""><i class="bi bi-instagram"></i></a></li>
             <li class="mx-2 self-center"><a href=""><i class="bi bi-facebook"></i></a></li>
             <li class="mx-2 self-center"><a href=""><i class="bi bi-whatsapp"></i></a></li>
