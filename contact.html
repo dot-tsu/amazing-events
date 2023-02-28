@@ -6,12 +6,142 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Amazing Events</title>
-    <link rel="icon" href="./assets/favicon.ico" type="image/favicon.ico" />
+    <link rel="icon" href="./assets/favicon.ico" type="image/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    display: ['Inter', 'sistem-ui', 'sans-serif'],
+                    body: ['Inter', 'sistem-ui', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#DC046C',
+                            50: '#FFEBF4',
+                            100: '#FFD6E9',
+                            200: '#FF99C9',
+                            300: '#FF5CA8',
+                            400: '#FF1F87',
+                            500: '#E00069',
+                            600: '#A3004C',
+                            700: '#660030',
+                            800: '#290013',
+                            900: '#14000A'
+                        },
+                        secondary: {
+                            DEFAULT: '#56CBF9',
+                            50: '#EBF9FE',
+                            100: '#D8F3FD',
+                            200: '#9EE1FA',
+                            300: '#64D0F7',
+                            400: '#2ABEF4',
+                            500: '#0B9FD5',
+                            600: '#08749B',
+                            700: '#054861',
+                            800: '#021D27',
+                            900: '#010E13'
+                        },
+                        dark: '#121417',
+                        light: '#FFF9FB'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body>
-
+<body class="bg-dark text-light lg:overflow-hidden">
+    <nav>
+        <div class="mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <img class="h-10 w-auto" src="./assets/Logo Amazing Events.png" alt="Amazing Events Logo">
+                    </a>
+                </div>
+                <div class="hidden md:block py-5">
+                    <div class="ml-10 flex items-baseline space-x-4 text-gray-300 px-3 rounded-md text-sm font-medium">
+                        <a href="./index.html" class="transition duration-150 ease-in-out hover:text-light">Home</a>
+                        <a href="./upcomingEvents.html"
+                            class="transition duration-150 ease-in-out hover:text-light">Upcoming Events</a>
+                        <a href="#" class="transition duration-150 ease-in-out hover:text-light">Past Events</a>
+                        <a href="./contact.html"
+                            class="transition duration-150 ease-in-out hover:text-light">Contact</a>
+                        <a href="./stats.html" class="transition duration-150 ease-in-out hover:text-light">Stats</a>
+                    </div>
+                </div>
+                <div class="mr-2 flex items-center md:hidden">
+                    <!-- Mobile menu button -->
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-4  text-gray-400 hover:text-white">
+                        <i class="bi bi-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, toggle classes based on menu state. /NEEDS JS/ -->
+        <div class="md:hidden" id="mobile-menu">
+            <div class="text-gray-300 rounded-md text-base font-medium px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="./index.html" class="hover:text-light block px-3 py-2">Home</a>
+                <a href="./upcomingEvents.html" class="hover:text-light block px-3 py-2">Upcoming Events</a>
+                <a href="./pastEvents.html" class="hover:text-light block px-3 py-2">Past Events</a>
+                <a href="#" class="hover:text-light block px-3 py-2">Contact</a>
+                <a href="./stats.html" class="hover:text-light block px-3 py-2">Stats</a>
+            </div>
+        </div>
+    </nav>
+    <header class="bg-primary text-3xl p-4 grid grid-cols-3">
+        <a href="./pastEvents.html" class="text-left"><i class="bi bi-caret-left-fill hover:text-dark"></i></a>
+        <h1 class="font-semibold text-center">Contact</h1>
+        <a href="./stats.html" class="text-right"><i class="bi bi-caret-right-fill hover:text-dark"></i></a>
+    </header>
+    <main class="flex items-center justify-center">
+        <!-- Contact Us Form -->
+        <form action="#" class="w-full md:w-1/2 sm:mx-auto py-10">
+            <div>
+                <div class="flex flex-col mb-3">
+                    <label for="name" class="font-semibold mb-1">Name: </label>
+                    <input type="text" id="name"
+                        class="px-3 py-2 bg-dark border border-secondary rounded focus:border-primary-500 focus:outline-none focus:text-light transition-color ease-in duration-200"
+                        required>
+                </div>
+                <div class="flex flex-col mb-3">
+                    <label for="email" class="font-semibold mb-1">Email: </label>
+                    <input type="text" id="email"
+                        class="px-3 py-2 bg-dark border border-secondary rounded focus:border-primary-500 focus:outline-none focus:text-light transition-color ease-in duration-200"
+                        required>
+                </div>
+                <div class="flex flex-col mb-3">
+                    <label for="message" class="font-semibold mb-1">Message: </label>
+                    <textarea rows="4" id="message"
+                        class="px-3 py-2 bg-dark border border-secondary rounded focus:border-primary-500 focus:outline-none focus:text-light transition-color ease-in duration-200"></textarea>
+                </div>
+            </div>
+            <div class="w-full pt-3 text-right">
+                <button type="submit"
+                    class="font-bold w-40 px-3 py-2 bg-secondary text-dark rounded-lg text-lg hover:bg-primary hover:text-light cursor-pointer transition ease-out delay-100">
+                    Send
+                </button>
+            </div>
+        </form>
+    </main>
+    <footer class="flex flex-row text-center bg-dark font-bold sm:text-lg p-1 sm:fixed bottom-0 w-full">
+        <ul class="flex justify-start basis-1/3">
+            <!-- Needs Links -->
+            <li class="mx-2 self-center"><a href=""><i class="bi bi-instagram"></i></a></li>
+            <li class="mx-2 self-center"><a href=""><i class="bi bi-facebook"></i></a></li>
+            <li class="mx-2 self-center"><a href=""><i class="bi bi-whatsapp"></i></a></li>
+        </ul>
+        <div class="flex basis-1/3 justify-center">
+            <p>© Made with <span class="text-primary">♥</span> by tsu</p>
+        </div>
+        <div class="flex-grow align-center text-end mx-2">
+            MindHub - Cohort 15
+        </div>
+    </footer>
 </body>
 
 </html>
