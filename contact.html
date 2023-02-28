@@ -53,9 +53,9 @@
     </script>
 </head>
 
-<body class="bg-dark text-light pt-10 overflow-hidden">
-    <nav class="fixed top-0 w-full bg-dark">
-        <div class="px-4">
+<body class="bg-dark text-light lg:overflow-hidden">
+    <nav>
+        <div class="mx-auto px-4">
             <div class="flex justify-between">
                 <div class="flex">
                     <a href="#" class="flex-shrink-0 flex items-center">
@@ -67,13 +67,13 @@
                         <a href="./index.html" class="transition duration-150 ease-in-out hover:text-light">Home</a>
                         <a href="./upcomingEvents.html"
                             class="transition duration-150 ease-in-out hover:text-light">Upcoming Events</a>
-                        <a href="./pastEvents.html" class="transition duration-150 ease-in-out hover:text-light">Past
-                            Events</a>
-                        <a href="#" class="transition duration-150 ease-in-out hover:text-light">Contact</a>
+                        <a href="#" class="transition duration-150 ease-in-out hover:text-light">Past Events</a>
+                        <a href="./contact.html"
+                            class="transition duration-150 ease-in-out hover:text-light">Contact</a>
                         <a href="./stats.html" class="transition duration-150 ease-in-out hover:text-light">Stats</a>
                     </div>
                 </div>
-                <div class="mr-2 flex items-center md:hidden">
+                <div class="-mr-2 flex items-center md:hidden">
                     <!-- Mobile menu button -->
                     <button type="button"
                         class="inline-flex items-center justify-center p-4  text-gray-400 hover:text-white">
@@ -85,26 +85,22 @@
         <!-- Mobile menu, toggle classes based on menu state. /NEEDS JS/ -->
         <div class="md:hidden" id="mobile-menu">
             <div class="text-gray-300 rounded-md text-base font-medium px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="/index.html"
-                    class="transition duration-150 ease-in-out hover:text-light block px-3 py-2">Home</a>
-                <a href="./upcomingEvents.html"
-                    class="transition duration-150 ease-in-out hover:text-light block px-3 py-2">Upcoming Events</a>
-                <a href="./pastEvents.html"
-                    class="transition duration-150 ease-in-out hover:text-light block px-3 py-2">Past Events</a>
-                <a href="#" class="transition duration-150 ease-in-out hover:text-light block px-3 py-2">Contact</a>
-                <a href="./stats.html"
-                    class="transition duration-150 ease-in-out hover:text-light block px-3 py-2">Stats</a>
+                <a href="./index.html" class="hover:text-light block px-3 py-2">Home</a>
+                <a href="./upcomingEvents.html" class="hover:text-light block px-3 py-2">Upcoming Events</a>
+                <a href="./pastEvents.html" class="hover:text-light block px-3 py-2">Past Events</a>
+                <a href="#" class="hover:text-light block px-3 py-2">Contact</a>
+                <a href="./stats.html" class="hover:text-light block px-3 py-2">Stats</a>
             </div>
         </div>
     </nav>
-    <header class="bg-primary text-3xl p-4 grid grid-cols-3 fixed top-[300px] sm:top-[60px] w-full ">
-        <a href="./pastEvents.html" class="text-left"><i class="bi bi-caret-left-fill hover:text-dark"></i></a>
-        <h1 class="font-semibold text-center">Contact</h1>
-        <a href="./stats.html" class="text-right"><i class="bi bi-caret-right-fill hover:text-dark"></i></a>
+    <header class="bg-primary text-3xl p-4 grid grid-cols-3">
+        <a href="./upcomingEvents.html" class="text-left"><i class="bi bi-caret-left-fill hover:text-dark"></i></a>
+        <h1 class="font-semibold text-center">Past Events</h1>
+        <a href="./contact.html" class="text-right"><i class="bi bi-caret-right-fill hover:text-dark"></i></a>
     </header>
-    <main class="h-screen flex items-center justify-center">
+    <main class="flex items-center justify-center">
         <!-- Contact Us Form -->
-        <form action="#" class="w-full md:w-1/2 sm:mx-auto">
+        <form action="#" class="w-full md:w-1/2 sm:mx-auto py-10">
             <div>
                 <div class="flex flex-col mb-3">
                     <label for="name" class="font-semibold mb-1">Name: </label>
@@ -132,7 +128,7 @@
             </div>
         </form>
     </main>
-    <footer class="flex flex-row text-center bg-dark font-bold sm:text-lg p-1 fixed bottom-0 w-full">
+    <footer class="flex flex-row text-center bg-dark font-bold sm:text-lg p-1 sm:fixed bottom-0 w-full">
         <ul class="flex justify-start basis-1/3">
             <!-- Needs Links -->
             <li class="mx-2 self-center"><a href=""><i class="bi bi-instagram"></i></a></li>
