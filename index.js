@@ -1,5 +1,5 @@
-// Display Data
-let data = {
+/* Display Data */
+let amazingEventsData = {
     "currentDate": "2022-01-01",
     "events": [
         {
@@ -173,7 +173,76 @@ let data = {
     ]
 };
 
-// Navbar
+let pastEventsGallery = "";
+let upcomingEventsGallery = "";
+const pastEventsGalleryHTML = document.getElementById('pastEventsGallery');
+const upcomingEventsGalleryHTML = document.getElementById('upcomingEventsGallery');
+const allEventsGalleryHTML = document.getElementById('allEventsGallery');
+
+// Loop that generates a dynamic template for each card
+for (let event of amazingEventsData.events) {
+    if (amazingEventsData.currentDate > event.date) {
+        pastEventsGallery += `
+            <!-- Card -->
+            <div class="w-full md:w-2/4 xl:w-1/4 2xl:w-2/5">
+                <div class="bg-secondary-50 rounded-lg shadow-md overflow-hidden mx-2 my-4 border-2 border-secondary-300 h-full">
+                    <img class="object-cover object-center w-full h-40" src="${event.image}" alt="Card Image">
+                    <div class="p-4">
+                        <h2 class="font-bold text-lg mb-2 text-primary-300">${event.name}</h2>
+                        <div class="h-20 overflow-hidden">
+                            <p class="text-gray-700 text-base mb-4">${event.description}</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-gray-900 font-bold text-xl">$${event.price}</p>
+                            <button
+                                class="bg-secondary-500 hover:bg-primary-500 text-white font-bold py-2 px-4 rounded transition ease-in-out delay-100"><a
+                                    href="./details.html">Details</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+    }
+    else {
+        upcomingEventsGallery += `
+        <!-- Card -->
+        <div class="w-full md:w-2/4 xl:w-1/4 2xl:w-2/5">
+            <div class="bg-secondary-50 rounded-lg shadow-md overflow-hidden mx-2 my-4 border-2 border-secondary-300 h-full">
+                <img class="object-cover object-center w-full h-40" src="${event.image}" alt="Card Image">
+                <div class="p-4">
+                    <h2 class="font-bold text-lg mb-2 text-primary-300">${event.name}</h2>
+                    <div class="h-20 overflow-hidden">
+                        <p class="text-gray-700 text-base mb-4">${event.description}</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-gray-900 font-bold text-xl">$${event.price}</p>
+                        <button
+                            class="bg-secondary-500 hover:bg-primary-500 text-white font-bold py-2 px-4 rounded transition ease-in-out delay-100"><a
+                                href="./details.html">Details</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }
+}
+let allEvents = pastEventsGallery + upcomingEventsGallery;
+
+// Check if the HTML id exists and fills in the gallery with the dynamic data
+switch (true) {
+    case Boolean(pastEventsGalleryHTML):
+        pastEventsGalleryHTML.innerHTML = pastEventsGallery;
+        break;
+    case Boolean(upcomingEventsGalleryHTML):
+        upcomingEventsGalleryHTML.innerHTML = upcomingEventsGallery;
+        break;
+    case Boolean(allEventsGalleryHTML):
+        allEventsGalleryHTML.innerHTML = allEvents;
+        break;
+    default:
+        console.log("No HTML elements found to update 😿");
+}
+
+
+/* Navbar */
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 
