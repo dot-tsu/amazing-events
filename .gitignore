@@ -1,1 +1,5 @@
-task
+#task folder
+task/
+
+#tailwind
+node_modules/
