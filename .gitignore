@@ -3,3 +3,6 @@ task/
 
 #tailwind
 node_modules/
+
+#test folder
+test/
