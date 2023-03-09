@@ -184,7 +184,23 @@ for (let event of amazingEventsData.events) {
     if (amazingEventsData.currentDate > event.date) {
         pastEventsGallery += `
         <!-- Card -->
-        <a href="../html/details.html" class="relative rounded-xl overflow-hidden group">
+        
+        <!-- Mobile -->
+        <div class="md:hidden">
+        <a class="overflow-hidden group mb-4 md:mb-0 md:max-w-md">
+            <img class="object-cover w-full h-64 rounded-t-xl" src="${event.image}" alt="">
+            <div class="p-5 flex flex-col justify-between bg-[#0F1113] rounded-b-xl">
+                <h1 class="text-center 2-xl md:text-3xl pb-1.5 font-bold text-secondary-400">
+                    ${event.name}
+                </h1>
+                <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
+                <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
+                <button class="bg-secondary-500 text-white font-bold py-2 px-4 rounded-xl"><a href="../details.html">Details</a></button> 
+            </div>
+        </a>
+    </div>
+        <!-- Desktop -->
+        <a href="../html/details.html" class="hidden md:flex relative rounded-xl overflow-hidden group">
          <img class="object-cover w-full h-64 group-hover:blur-[2px] transition-all duration-200 ease-out"
             src="${event.image}" alt="">
             <div
@@ -200,7 +216,23 @@ for (let event of amazingEventsData.events) {
     else {
         upcomingEventsGallery += `
         <!-- Card -->
-        <a href="../html/details.html" class="relative rounded-xl overflow-hidden group">
+        
+        <!-- Mobile -->
+        <div class="md:hidden">
+        <a class="overflow-hidden group mb-4 md:mb-0 md:max-w-md">
+            <img class="object-cover w-full h-64 rounded-t-xl" src="${event.image}" alt="">
+            <div class="p-5 flex flex-col justify-between bg-[#0F1113] rounded-b-xl">
+                <h1 class="text-center 2-xl md:text-3xl pb-1.5 font-bold text-secondary-400">
+                    ${event.name}
+                </h1>
+                <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
+                <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
+                <button class="bg-secondary-500 text-white font-bold py-2 px-4 rounded-xl"><a href="../details.html">Details</a></button> 
+            </div>
+        </a>
+    </div>
+        <!-- Desktop -->
+        <a href="../html/details.html" class="hidden md:flex relative rounded-xl overflow-hidden group">
          <img class="object-cover w-full h-64 group-hover:blur-[2px] transition-all duration-200 ease-out"
             src="${event.image}" alt="">
             <div
