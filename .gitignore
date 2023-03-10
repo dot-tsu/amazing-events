@@ -3,6 +3,7 @@ task/
 
 #tailwind
 node_modules/
+css/input.css
 
 #test folder
 test/
