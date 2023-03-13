@@ -191,15 +191,12 @@ let filteredEvents = [];
 function filterEvents() {
     const nameFilter = searchBar.value.trim().toLowerCase();
     const categoryFilters = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-    console.log(categoryFilters);
 
     filteredEvents = amazingEventsData.events.filter(event => {
         const nameMatch = event.name.toLowerCase().includes(nameFilter);
         const categoryMatch = categoryFilters.length === 0 || categoryFilters.includes(event.category);
-        console.log(categoryMatch);
         return nameMatch && categoryMatch;
     });
-    console.log(filteredEvents);
 }
 // Display content
 function displayContent() {
@@ -304,11 +301,9 @@ displayContent();
 // Event Listeners
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener("change", event => {
-        console.log(`El estado de la checkbox ${checkbox.id} cambió a ${checkbox.checked}`)
         displayContent();
     })
 })
 searchBar.addEventListener("input", event => {
-    console.log(`El usuario ingresó: ${searchBar.value}`);
     displayContent()
 })
