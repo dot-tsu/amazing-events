@@ -1,3 +1,11 @@
+/* Navbar */
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
 /* Display Data */
 let amazingEventsData = {
     "currentDate": "2022-01-01",
@@ -172,17 +180,41 @@ let amazingEventsData = {
         }
     ]
 };
+/* Search Bar and Checkboxes */
 
-let pastEventsGallery = "";
-let upcomingEventsGallery = "";
-const pastEventsGalleryHTML = document.getElementById('pastEventsGallery');
-const upcomingEventsGalleryHTML = document.getElementById('upcomingEventsGallery');
-const allEventsGalleryHTML = document.getElementById('allEventsGallery');
+const searchBar = document.querySelector("#searchBar");
+const checkboxes = document.querySelectorAll(".form-checkbox");
 
-// Loop that generates a dynamic template for each card
-for (let event of amazingEventsData.events) {
-    if (amazingEventsData.currentDate > event.date) {
-        pastEventsGallery += `
+// Event filter
+let filteredEvents = [];
+
+function filterEvents() {
+    const nameFilter = searchBar.value.trim().toLowerCase();
+    const categoryFilters = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+    console.log(categoryFilters);
+
+    filteredEvents = amazingEventsData.events.filter(event => {
+        const nameMatch = event.name.toLowerCase().includes(nameFilter);
+        const categoryMatch = categoryFilters.length === 0 || categoryFilters.includes(event.category);
+        console.log(categoryMatch);
+        return nameMatch && categoryMatch;
+    });
+    console.log(filteredEvents);
+}
+// Display content
+function displayContent() {
+
+    let pastEventsGallery = "";
+    let upcomingEventsGallery = "";
+    const pastEventsGalleryHTML = document.getElementById('pastEventsGallery');
+    const upcomingEventsGalleryHTML = document.getElementById('upcomingEventsGallery');
+    const allEventsGalleryHTML = document.getElementById('allEventsGallery');
+
+    filterEvents();
+    // Loop that generates a dynamic template for each card
+    for (let event of filteredEvents) {
+        if (amazingEventsData.currentDate > event.date) {
+            pastEventsGallery += `
         <!-- Card -->
         
         <!-- Mobile -->
@@ -212,9 +244,9 @@ for (let event of amazingEventsData.events) {
                 <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
             </div>
             `;
-    }
-    else {
-        upcomingEventsGallery += `
+        }
+        else {
+            upcomingEventsGallery += `
         <!-- Card -->
         
         <!-- Mobile -->
@@ -244,30 +276,39 @@ for (let event of amazingEventsData.events) {
                 <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
             </div>
             `;
+        }
+    }
+    let allEvents = pastEventsGallery + upcomingEventsGallery;
+
+    // Check if the HTML id exists, clears the innerHTML and fills in the gallery with the dynamic data
+    switch (true) {
+        case Boolean(pastEventsGalleryHTML):
+            pastEventsGalleryHTML.innerHTML = "";
+            pastEventsGalleryHTML.innerHTML = pastEventsGallery;
+            break;
+        case Boolean(upcomingEventsGalleryHTML):
+            upcomingEventsGalleryHTML.innerHTML = "";
+            upcomingEventsGalleryHTML.innerHTML = upcomingEventsGallery;
+            break;
+        case Boolean(allEventsGalleryHTML):
+            allEventsGalleryHTML.innerHTML = "";
+            allEventsGalleryHTML.innerHTML = allEvents;
+            break;
+        default:
+            console.log("No HTML elements found to update 😿");
     }
 }
-let allEvents = pastEventsGallery + upcomingEventsGallery;
 
-// Check if the HTML id exists and fills in the gallery with the dynamic data
-switch (true) {
-    case Boolean(pastEventsGalleryHTML):
-        pastEventsGalleryHTML.innerHTML = pastEventsGallery;
-        break;
-    case Boolean(upcomingEventsGalleryHTML):
-        upcomingEventsGalleryHTML.innerHTML = upcomingEventsGallery;
-        break;
-    case Boolean(allEventsGalleryHTML):
-        allEventsGalleryHTML.innerHTML = allEvents;
-        break;
-    default:
-        console.log("No HTML elements found to update 😿");
-}
+displayContent();
 
-
-/* Navbar */
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-
-mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-});
+// Event Listeners
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener("change", event => {
+        console.log(`El estado de la checkbox ${checkbox.id} cambió a ${checkbox.checked}`)
+        displayContent();
+    })
+})
+searchBar.addEventListener("input", event => {
+    console.log(`El usuario ingresó: ${searchBar.value}`);
+    displayContent()
+})
