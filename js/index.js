@@ -6,7 +6,7 @@ mobileMenuButton.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
 });
 
-/* Search Bar and Checkboxes */
+/* Search Bar and Category Selector */
 const searchBar = document.querySelector("#searchBar");
 const checkboxes = document.querySelectorAll(".form-checkbox");
 
@@ -23,7 +23,7 @@ function filterEvents() {
         return nameMatch && categoryMatch;
     });
 }
-// Display content
+// Display Content
 function displayContent() {
 
     let pastEventsGallery = "";
