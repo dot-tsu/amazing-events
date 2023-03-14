@@ -51,12 +51,12 @@ function displayContent() {
                     <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
                     <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
                     <button class="bg-secondary-500 text-white font-bold py-2 px-4 rounded-xl"><a
-                            href="../details.html">Details</a></button>
+                            href="../details.html?id=${event._id}">Details</a></button>
                 </div>
             </a>
         </div>
         <!-- Desktop -->
-        <a href="../html/details.html" class="hidden md:flex relative rounded-xl overflow-hidden group">
+        <a href="../html/details.html?id=${event._id}" class="hidden md:flex relative rounded-xl overflow-hidden group">
             <img class="object-cover w-full h-64 group-hover:blur-[2px] transition-all duration-200 ease-out"
                 src="${event.image}" alt="">
             <div
