@@ -1,11 +1,3 @@
-/* Navbar */
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-
-mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-});
-
 /* Search Bar and Category Selector */
 const searchBar = document.querySelector("#searchBar");
 const checkboxes = document.querySelectorAll(".form-checkbox");
