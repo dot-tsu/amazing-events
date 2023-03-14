@@ -66,56 +66,8 @@
     <main>
         <div class="mx-3 border-b-2 border-secondary-300">
             <form class="sm:grid items-center m-4">
-                <div class="col-start-1 col-end-3 mx-5 flex flex-wrap m-3 gap-x-3">
-                    <div class="checkbox-wrapper-58">
-                        <label class="switch">
-                            <input type="checkbox" name="category" value="Food Fair" class="form-checkbox">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="text-secondary-300 ml-1 mb-1 font-semibold">Food Fair</span>
-                    </div>
-                    <div class="checkbox-wrapper-58">
-                        <label class="switch">
-                            <input type="checkbox" name="category" value="Museum" class="form-checkbox">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="text-secondary-300 ml-1 mb-1 font-semibold">Museum</span>
-                    </div>
-                    <div class="checkbox-wrapper-58">
-                        <label class="switch">
-                            <input type="checkbox" name="category" value="Costume Party" class="form-checkbox">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="text-secondary-300 ml-1 mb-1 font-semibold">Costume Party</span>
-                    </div>
-                    <div class="checkbox-wrapper-58">
-                        <label class="switch">
-                            <input type="checkbox" name="category" value="Music Concert" class="form-checkbox">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="text-secondary-300 ml-1 mb-1 font-semibold">Music Concert</span>
-                    </div>
-                    <div class="checkbox-wrapper-58">
-                        <label class="switch">
-                            <input type="checkbox" name="category" value="Race" class="form-checkbox">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="text-secondary-300 ml-1 mb-1 font-semibold">Race</span>
-                    </div>
-                    <div class="checkbox-wrapper-58">
-                        <label class="switch">
-                            <input type="checkbox" name="category" value="Book Exchange" class="form-checkbox">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="text-secondary-300 ml-1 mb-1 font-semibold">Book Exchange</span>
-                    </div>
-                    <div class="checkbox-wrapper-58">
-                        <label class="switch">
-                            <input type="checkbox" name="category" value="Cinema" class="form-checkbox">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="text-secondary-300 ml-1 mb-1 font-semibold">Cinema</span>
-                    </div>
+                <div id="checkbox-container" class="col-start-1 col-end-3 mx-5 flex flex-wrap m-3 gap-x-3">
+                    <!-- dynamicDisplay fills this -->
                 </div>
                 <div class="col-start-3 col-end-4 text-center">
                     <input
@@ -126,7 +78,7 @@
         </div>
         <!-- Gallery -->
         <div id="upcomingEventsGallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-10 my-5">
-
+            <!-- dynamicDisplay.js fills this -->
         </div>
     </main>
     <footer class="flex flex-row text-center bg-dark font-bold sm:text-lg p-1">

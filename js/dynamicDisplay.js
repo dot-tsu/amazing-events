@@ -1,9 +1,33 @@
-/* Search Bar and Category Selector */
-const searchBar = document.querySelector("#searchBar");
-const checkboxes = document.querySelectorAll(".form-checkbox");
+/* Category Selector and Search Bar */
+
+// Display Category Checkboxes
+function displayCheckboxes() {
+    // Use spread constructor and Set() operator to fill the array with unique categories
+    const categories = [...new Set(amazingEventsData.events.map(event => event.category))];
+    let checkboxSet = "";
+    const checkboxContainerHTML = document.getElementById("checkbox-container");
+
+    categories.forEach(category => {
+        const checkboxTemplate = `
+      <div class="checkbox-wrapper-58">
+        <label class="switch">
+          <input type="checkbox" name="category" value="${category}" class="form-checkbox">
+          <span class="slider"></span>
+        </label>
+        <span class="text-secondary-300 ml-1 mb-1 font-semibold">${category}</span>
+      </div>
+    `;
+        checkboxSet += checkboxTemplate;
+    });
+    // Check if the HTML id exists  and fills in the checkboxes set with the dynamic data
+    Boolean(checkboxContainerHTML) ? checkboxContainerHTML.innerHTML = checkboxSet : console.log("No HTML elements were found to update 😿");
+}
+displayCheckboxes();
 
 // Event filter
 let filteredEvents = [];
+const searchBar = document.querySelector("#searchBar");
+const checkboxes = document.querySelectorAll(".form-checkbox");
 
 function filterEvents() {
     const nameFilter = searchBar.value.trim().toLowerCase();
@@ -15,20 +39,20 @@ function filterEvents() {
         return nameMatch && categoryMatch;
     });
 }
-// Display Content
 
+// Display Event Cards
 function displayContent() {
 
     let pastEventsGallery = "";
     let upcomingEventsGallery = "";
-    const pastEventsGalleryHTML = document.getElementById('pastEventsGallery');
-    const upcomingEventsGalleryHTML = document.getElementById('upcomingEventsGallery');
-    const allEventsGalleryHTML = document.getElementById('allEventsGallery');
+    const pastEventsGalleryHTML = document.getElementById("pastEventsGallery");
+    const upcomingEventsGalleryHTML = document.getElementById("upcomingEventsGallery");
+    const allEventsGalleryHTML = document.getElementById("allEventsGallery");
 
     filterEvents();
 
     // Loop that generates a dynamic template for each card
-    for (let event of filteredEvents) {
+    filteredEvents.forEach(event => {
         const cardTemplate = `
         <!-- Card -->
 
@@ -65,7 +89,8 @@ function displayContent() {
         else {
             upcomingEventsGallery += cardTemplate;
         }
-    }
+    });
+
     let allEvents = pastEventsGallery + upcomingEventsGallery;
 
     // Check if the HTML id exists, clears the innerHTML and fills in the gallery with the dynamic data
@@ -96,5 +121,5 @@ checkboxes.forEach(checkbox => {
     })
 })
 searchBar.addEventListener("input", event => {
-    displayContent()
-})
+    displayContent();
+});
