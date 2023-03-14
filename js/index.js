@@ -24,6 +24,7 @@ function filterEvents() {
     });
 }
 // Display Content
+
 function displayContent() {
 
     let pastEventsGallery = "";
@@ -36,28 +37,28 @@ function displayContent() {
 
     // Loop that generates a dynamic template for each card
     for (let event of filteredEvents) {
-        if (amazingEventsData.currentDate > event.date) {
-            pastEventsGallery += `
+        const cardTemplate = `
         <!-- Card -->
-        
+
         <!-- Mobile -->
         <div class="md:hidden">
-        <a class="overflow-hidden group mb-4 md:mb-0 md:max-w-md">
-            <img class="object-cover w-full h-64 rounded-t-xl" src="${event.image}" alt="">
-            <div class="p-5 flex flex-col justify-between bg-[#0F1113] rounded-b-xl">
-                <h1 class="text-center 2-xl md:text-3xl pb-1.5 font-bold text-secondary-400">
-                    ${event.name}
-                </h1>
-                <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
-                <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
-                <button class="bg-secondary-500 text-white font-bold py-2 px-4 rounded-xl"><a href="../details.html">Details</a></button> 
-            </div>
-        </a>
-    </div>
+            <a class="overflow-hidden group mb-4 md:mb-0 md:max-w-md">
+                <img class="object-cover w-full h-64 rounded-t-xl" src="${event.image}" alt="">
+                <div class="p-5 flex flex-col justify-between bg-[#0F1113] rounded-b-xl">
+                    <h1 class="text-center 2-xl md:text-3xl pb-1.5 font-bold text-secondary-400">
+                        ${event.name}
+                    </h1>
+                    <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
+                    <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
+                    <button class="bg-secondary-500 text-white font-bold py-2 px-4 rounded-xl"><a
+                            href="../details.html">Details</a></button>
+                </div>
+            </a>
+        </div>
         <!-- Desktop -->
         <a href="../html/details.html" class="hidden md:flex relative rounded-xl overflow-hidden group">
-         <img class="object-cover w-full h-64 group-hover:blur-[2px] transition-all duration-200 ease-out"
-            src="${event.image}" alt="">
+            <img class="object-cover w-full h-64 group-hover:blur-[2px] transition-all duration-200 ease-out"
+                src="${event.image}" alt="">
             <div
                 class="card-title inset-0 absolute p-5 flex flex-col justify-between bg-dark/75 opacity-0 scale-110 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200 ease-out">
                 <h1 class="text-center 2-xl md:text-3xl pb-1.5 font-bold text-secondary-400">
@@ -65,40 +66,12 @@ function displayContent() {
                 </h1>
                 <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
                 <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
-            </div>
-            `;
+            </div>`
+        if (amazingEventsData.currentDate > event.date) {
+            pastEventsGallery += cardTemplate;
         }
         else {
-            upcomingEventsGallery += `
-        <!-- Card -->
-        
-        <!-- Mobile -->
-        <div class="md:hidden">
-        <a class="overflow-hidden group mb-4 md:mb-0 md:max-w-md">
-            <img class="object-cover w-full h-64 rounded-t-xl" src="${event.image}" alt="">
-            <div class="p-5 flex flex-col justify-between bg-[#0F1113] rounded-b-xl">
-                <h1 class="text-center 2-xl md:text-3xl pb-1.5 font-bold text-secondary-400">
-                    ${event.name}
-                </h1>
-                <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
-                <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
-                <button class="bg-secondary-500 text-white font-bold py-2 px-4 rounded-xl"><a href="../details.html">Details</a></button> 
-            </div>
-        </a>
-    </div>
-        <!-- Desktop -->
-        <a href="../html/details.html" class="hidden md:flex relative rounded-xl overflow-hidden group">
-         <img class="object-cover w-full h-64 group-hover:blur-[2px] transition-all duration-200 ease-out"
-            src="${event.image}" alt="">
-            <div
-                class="card-title inset-0 absolute p-5 flex flex-col justify-between bg-dark/75 opacity-0 scale-110 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200 ease-out">
-                <h1 class="text-center 2-xl md:text-3xl pb-1.5 font-bold text-secondary-400">
-                    ${event.name}
-                </h1>
-                <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
-                <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
-            </div>
-            `;
+            upcomingEventsGallery += cardTemplate;
         }
     }
     let allEvents = pastEventsGallery + upcomingEventsGallery;
