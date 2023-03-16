@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/output.css">
 
-    <script src="../js/index.js" defer></script>
+    <script src="../js/navbar.js" defer></script>
+    <script src="../js/data.js" defer></script>
+    <script src="../js/details.js" defer></script>
 </head>
 
 <body class="bg-dark text-light lg:overflow-hidden">
@@ -38,70 +40,30 @@
                 </div>
                 <div class="mr-2 flex items-center md:hidden">
                     <!-- Mobile menu button -->
-                    <button type="button id=" mobile-menu-button""
+                    <button type="button" id=" mobile-menu-button"
                         class="inline-flex items-center justify-center p-4  text-gray-400 hover:text-white">
                         <i class="bi bi-list text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile menu, toggle classes based on menu state. /NEEDS JS/ -->
+        <!-- Mobile menu, toggle classes based on menu state. -->
         <div class="hidden" id="mobile-menu">
             <div class="text-gray-300 rounded-md text-base font-medium px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="../html/index.html" class="hover:text-light block px-3 py-2">Home</a>
                 <a href="../html/upcomingEvents.html" class="hover:text-light block px-3 py-2">Upcoming Events</a>
-                <a href="./pastEvents.html" class="hover:text-light block px-3 py-2">Past Events</a>
-                <a href="#" class="hover:text-light block px-3 py-2">Contact</a>
+                <a href="../html/pastEvents.html" class="hover:text-light block px-3 py-2">Past Events</a>
+                <a href="../html/contact.html" class="hover:text-light block px-3 py-2">Contact</a>
                 <a href="../html/stats.html" class="hover:text-light block px-3 py-2">Stats</a>
             </div>
         </div>
     </nav>
     <main class="flex items-center justify-center">
-        <div class="py-5">
-            <div class="flex flex-col md:flex-row rounded-lg shadow-lg overflow-hidden border-2 border-secondary-300">
-                <!-- Image -->
-                <img src="https://via.placeholder.com/350x250" alt="Item Image"
-                    class="h-64 md:h-auto md:w-1/2 object-cover">
-                <!-- Item Details -->
-                <div class="bg-dark p-6 md:w-1/2">
-                    <h2 class="text-2xl font-bold mb-4 text-primary-300">Item Details</h2>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">Name:</h3>
-                        <p class="inline-block ">{{name}}</p>
-                    </div>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">Date:</h3>
-                        <p class="inline-block">{{date}}</p>
-                    </div>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">Description:</h3>
-                        <p class="inline-block">{{description}}</p>
-                    </div>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">Category:</h3>
-                        <p class="inline-block">{{category}}</p>
-                    </div>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">Place:</h3>
-                        <p class="inline-block">{{place}}</p>
-                    </div>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">Capacity:</h3>
-                        <p class="inline-block">{{capacity}}</p>
-                    </div>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">Assistance or Estimate:</h3>
-                        <p class="inline-block">{{estimate}}</p>
-                    </div>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">Price:</h3>
-                        <p class="inline-block">{{price}}</p>
-                    </div>
-                </div>
-            </div>
+        <div id="details-container" class="max-w-5xl">
+
         </div>
     </main>
-    <footer class="flex flex-row text-center bg-dark font-bold sm:text-lg p-1 sm:fixed bottom-0 w-full">
+    <footer class="flex flex-row text-center bg-dark font-bold sm:text-lg p-1 w-full">
         <ul class="flex justify-start basis-1/3">
             <!-- Needs Links -->
             <li class="mx-2 self-center"><a href=""><i class="bi bi-instagram"></i></a></li>
