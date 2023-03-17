@@ -1,8 +1,11 @@
-const querySearch = document.location.search;
-const id = new URLSearchParams(querySearch).get("id");
-const event = amazingEventsData.events.find(event => event._id == id);
+async function main() {
 
-const cardTemplate = `
+    const amazingEventsData = await getData();
+    const querySearch = document.location.search;
+    const id = new URLSearchParams(querySearch).get("id");
+    const event = amazingEventsData.events.find(event => event._id == id);
+
+    const cardTemplate = `
 <div class="flex flex-col md:flex-row rounded-lg shadow-lg overflow-hidden border-2 border-secondary-300 mx-5 my-5">
     <!-- Image -->
     <img src="${event.image}" alt="Item Image" class="h-65 md:h-auto md:w-1/2 object-cover">
@@ -35,7 +38,7 @@ const cardTemplate = `
         </div>
         <div class="md:mb-4">
             <h3 class="text-lg font-bold inline-block mr-2 text-secondary-300">${event.assistance !== undefined ?
-        "Assistance: " : "Assistance Estimate: "}</h3>
+            "Assistance: " : "Assistance Estimate: "}</h3>
             <p class="inline-block">${event.assistance !== undefined ? event.assistance : event.estimate}</p>
         </div>
         <div class="md:mb-4">
@@ -45,5 +48,7 @@ const cardTemplate = `
     </div>
 </div> `
 
-const detailsContainer = document.getElementById("details-container");
-detailsContainer.innerHTML = cardTemplate;
+    const detailsContainer = document.getElementById("details-container");
+    detailsContainer.innerHTML = cardTemplate;
+}
+main()
