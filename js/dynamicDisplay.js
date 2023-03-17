@@ -1,14 +1,37 @@
-/* Category Selector and Search Bar */
+/* API */
+async function getData() {
+    const localDataPath = "../json/data.json"
+    try {
+        const response = await fetch("https://mindhub-xj03.onrender.com/api/amazing");
+        const data = await response.json();
+        console.log("Data successfully retrieved from the API. 🐱");
+        return data;
+    } catch (error) {
+        console.error(error, "\nFailed to retrieve data from the API, using local data. 😿");
+        const localResponse = await fetch(localDataPath);
+        const localData = await localResponse.json();
+        console.log("Data successfully retrieved from local JSON. 🐱");
+        return localData;
+    }
+}
 
-// Display Category Checkboxes
-function displayCheckboxes() {
-    // Use spread constructor and Set() operator to fill the array with unique categories
-    const categories = [...new Set(amazingEventsData.events.map(event => event.category))];
-    let checkboxSet = "";
-    const checkboxContainerHTML = document.getElementById("checkbox-container");
+/* Display Content */
+async function main() {
 
-    categories.forEach(category => {
-        const checkboxTemplate = `
+    // Retrieve data from the API   
+    const amazingEventsData = await getData();
+
+    /* Category Selector and Search Bar */
+
+    // Display Category Checkboxes
+    function displayCheckboxes() {
+        // Use spread constructor and Set() operator to fill the array with unique categories
+        const categories = [...new Set(amazingEventsData.events.map(event => event.category))];
+        let checkboxSet = "";
+        const checkboxContainerHTML = document.getElementById("checkbox-container");
+
+        categories.forEach(category => {
+            const checkboxTemplate = `
       <div class="checkbox-wrapper-58">
         <label class="switch">
           <input type="checkbox" name="category" value="${category}" class="form-checkbox">
@@ -17,43 +40,44 @@ function displayCheckboxes() {
         <span class="text-secondary-300 ml-1 mb-1 font-semibold">${category}</span>
       </div>
     `;
-        checkboxSet += checkboxTemplate;
-    });
-    // Check if the HTML id exists  and fills in the checkboxes set with the dynamic data
-    Boolean(checkboxContainerHTML) ? checkboxContainerHTML.innerHTML = checkboxSet : console.log("No HTML elements were found to update 😿");
-}
-displayCheckboxes();
+            checkboxSet += checkboxTemplate;
+        });
+        // Check if the HTML id exists  and fills in the checkboxes set with the dynamic data
+        Boolean(checkboxContainerHTML) ? checkboxContainerHTML.innerHTML = checkboxSet : console.log("No HTML elements were found to update 😿");
+    }
 
-// Event filter
-let filteredEvents = [];
-const searchBar = document.querySelector("#searchBar");
-const checkboxes = document.querySelectorAll(".form-checkbox");
+    displayCheckboxes();
 
-function filterEvents() {
-    const nameFilter = searchBar.value.trim().toLowerCase();
-    const categoryFilters = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+    // Event filter
+    let filteredEvents = [];
+    const searchBar = document.querySelector("#searchBar");
+    const checkboxes = document.querySelectorAll(".form-checkbox");
 
-    filteredEvents = amazingEventsData.events.filter(event => {
-        const nameMatch = event.name.toLowerCase().includes(nameFilter);
-        const categoryMatch = categoryFilters.length === 0 || categoryFilters.includes(event.category);
-        return nameMatch && categoryMatch;
-    });
-}
+    function filterEvents() {
+        const nameFilter = searchBar.value.trim().toLowerCase();
+        const categoryFilters = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
 
-// Display Event Cards
-function displayContent() {
+        filteredEvents = amazingEventsData.events.filter(event => {
+            const nameMatch = event.name.toLowerCase().includes(nameFilter);
+            const categoryMatch = categoryFilters.length === 0 || categoryFilters.includes(event.category);
+            return nameMatch && categoryMatch;
+        });
+    }
 
-    let pastEventsGallery = "";
-    let upcomingEventsGallery = "";
-    const pastEventsGalleryHTML = document.getElementById("pastEventsGallery");
-    const upcomingEventsGalleryHTML = document.getElementById("upcomingEventsGallery");
-    const allEventsGalleryHTML = document.getElementById("allEventsGallery");
+    // Display Event Cards
+    function displayContent() {
 
-    filterEvents();
+        let pastEventsGallery = "";
+        let upcomingEventsGallery = "";
+        const pastEventsGalleryHTML = document.getElementById("pastEventsGallery");
+        const upcomingEventsGalleryHTML = document.getElementById("upcomingEventsGallery");
+        const allEventsGalleryHTML = document.getElementById("allEventsGallery");
 
-    // Loop that generates a dynamic template for each card
-    filteredEvents.forEach(event => {
-        const cardTemplate = `
+        filterEvents();
+
+        // Loop that generates a dynamic template for each card
+        filteredEvents.forEach(event => {
+            const cardTemplate = `
         <!-- Card -->
 
         <!-- Mobile -->
@@ -83,43 +107,46 @@ function displayContent() {
                 <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
                 <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
             </div>`
-        if (amazingEventsData.currentDate > event.date) {
-            pastEventsGallery += cardTemplate;
-        }
-        else {
-            upcomingEventsGallery += cardTemplate;
-        }
-    });
+            if (amazingEventsData.currentDate > event.date) {
+                pastEventsGallery += cardTemplate;
+            }
+            else {
+                upcomingEventsGallery += cardTemplate;
+            }
+        });
 
-    let allEvents = pastEventsGallery + upcomingEventsGallery;
+        let allEvents = pastEventsGallery + upcomingEventsGallery;
 
-    // Check if the HTML id exists, clears the innerHTML and fills in the gallery with the dynamic data
-    switch (true) {
-        case Boolean(pastEventsGalleryHTML):
-            pastEventsGalleryHTML.innerHTML = "";
-            pastEventsGalleryHTML.innerHTML = pastEventsGallery;
-            break;
-        case Boolean(upcomingEventsGalleryHTML):
-            upcomingEventsGalleryHTML.innerHTML = "";
-            upcomingEventsGalleryHTML.innerHTML = upcomingEventsGallery;
-            break;
-        case Boolean(allEventsGalleryHTML):
-            allEventsGalleryHTML.innerHTML = "";
-            allEventsGalleryHTML.innerHTML = allEvents;
-            break;
-        default:
-            console.log("No HTML elements found to update 😿");
+        // Check if the HTML id exists, clears the innerHTML and fills in the gallery with the dynamic data
+        switch (true) {
+            case Boolean(pastEventsGalleryHTML):
+                pastEventsGalleryHTML.innerHTML = "";
+                pastEventsGalleryHTML.innerHTML = pastEventsGallery;
+                break;
+            case Boolean(upcomingEventsGalleryHTML):
+                upcomingEventsGalleryHTML.innerHTML = "";
+                upcomingEventsGalleryHTML.innerHTML = upcomingEventsGallery;
+                break;
+            case Boolean(allEventsGalleryHTML):
+                allEventsGalleryHTML.innerHTML = "";
+                allEventsGalleryHTML.innerHTML = allEvents;
+                break;
+            default:
+                console.log("No HTML elements found to update 😿");
+        }
     }
+
+    displayContent();
+
+    // Event Listeners
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", event => {
+            displayContent();
+        })
+    })
+    searchBar.addEventListener("input", event => {
+        displayContent();
+    });
 }
 
-displayContent();
-
-// Event Listeners
-checkboxes.forEach(checkbox => {
-    checkbox.addEventListener("change", event => {
-        displayContent();
-    })
-})
-searchBar.addEventListener("input", event => {
-    displayContent();
-});
+main();
