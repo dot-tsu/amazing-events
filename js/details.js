@@ -1,16 +1,17 @@
 async function main() {
+  const amazingEventsData = await getData();
+  const querySearch = document.location.search;
+  const id = new URLSearchParams(querySearch).get("id");
+  const event = amazingEventsData.events.find((event) => event._id == id);
 
-    const amazingEventsData = await getData();
-    const querySearch = document.location.search;
-    const id = new URLSearchParams(querySearch).get("id");
-    const event = amazingEventsData.events.find(event => event._id == id);
-
-    const cardTemplate = `
+  const cardTemplate = `
     <div id="details-container" class="max-w-5xl">
     <div
         class="flex flex-col md:flex-row rounded-lg shadow-lg overflow-hidden border-2 border-secondary-300 mx-5 my-5">
         <!-- Image -->
-        <img src="${event.image}" alt="Item Image" class="h-65 md:h-auto md:w-1/2 object-cover">
+        <img src="${
+          event.image
+        }" alt="Item Image" class="h-65 md:h-auto md:w-1/2 object-cover">
         <!-- Item Details -->
         <div class="bg-[#0F1113] md:w-1/2">
             <table class="table table-auto w-full overflow-hidden">
@@ -91,13 +92,20 @@ async function main() {
                     </tr>
                     <tr class="odd:bg-black/10 even:bg-black/20">
                         <th>
-                            <h2 class="font-bold md:text-lg text-secondary-400 p-3">${event.assistance !==
-            undefined ? "Assistance" : "Assistance Estimate"}</h2>
+                            <h2 class="font-bold md:text-lg text-secondary-400 p-3">${
+                              event.assistance !== undefined
+                                ? "Assistance"
+                                : "Estimated Assistance"
+                            }</h2>
                         </th>
                         <td>
                             <p
                                 class="p-3 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">
-                                ${event.assistance !== undefined ? event.assistance : event.estimate}</p>
+                                ${
+                                  event.assistance !== undefined
+                                    ? event.assistance
+                                    : event.estimate
+                                }</p>
                         </td>
                     </tr>
                     <tr class="odd:bg-black/10 even:bg-black/20">
@@ -113,9 +121,9 @@ async function main() {
                 </tbody>
             </table>
         </div>
-    </div>`
+    </div>`;
 
-    const detailsContainer = document.getElementById("details-container");
-    detailsContainer.innerHTML = cardTemplate;
+  const detailsContainer = document.getElementById("details-container");
+  detailsContainer.innerHTML = cardTemplate;
 }
-main()
+main();
