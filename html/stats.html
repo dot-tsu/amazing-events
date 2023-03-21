@@ -13,6 +13,7 @@
 
     <script src="../js/navbar.js" defer></script>
     <script src="../js/getData.js" defer></script>
+    <script src="../js/stats.js" defer></script>
 </head>
 
 <body class="bg-dark text-light">
@@ -81,13 +82,8 @@
                 <th class="font-bold md:text-lg text-secondary-400 p-1">Event with larger capacity</td>
             </thead>
             <tbody>
-                <tr class="odd:bg-black/10 even:bg-black/20">
-                    <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">Lorem
-                        ipsum dolor sit</td>
-                    <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">Lorem
-                        ipsum dolor sit</td>
-                    <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">Lorem
-                        ipsum dolor sit</td>
+                <tr id="statisticsTable" class="odd:bg-black/10 even:bg-black/20">
+                    <!-- stats.js fills this -->
                 </tr>
             </tbody>
         </table>
