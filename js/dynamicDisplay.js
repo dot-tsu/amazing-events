@@ -1,20 +1,21 @@
 /* Display Content */
 async function main() {
+  // Retrieve data from the API
+  const amazingEventsData = await getData();
 
-    // Retrieve data from the API   
-    const amazingEventsData = await getData();
+  /* Category Selector and Search Bar */
 
-    /* Category Selector and Search Bar */
+  // Display Category Checkboxes
+  function displayCheckboxes() {
+    // Use spread constructor and Set() operator to fill the array with unique categories
+    const categories = [
+      ...new Set(amazingEventsData.events.map((event) => event.category)),
+    ];
+    let checkboxSet = "";
+    const checkboxContainerHTML = document.getElementById("checkbox-container");
 
-    // Display Category Checkboxes
-    function displayCheckboxes() {
-        // Use spread constructor and Set() operator to fill the array with unique categories
-        const categories = [...new Set(amazingEventsData.events.map(event => event.category))];
-        let checkboxSet = "";
-        const checkboxContainerHTML = document.getElementById("checkbox-container");
-
-        categories.forEach(category => {
-            const checkboxTemplate = `
+    categories.forEach((category) => {
+      const checkboxTemplate = `
       <div class="checkbox-wrapper-58">
         <label class="switch">
           <input type="checkbox" name="category" value="${category}" class="form-checkbox">
@@ -23,44 +24,51 @@ async function main() {
         <span class="text-secondary-300 ml-1 mb-1 font-semibold">${category}</span>
       </div>
     `;
-            checkboxSet += checkboxTemplate;
-        });
-        // Check if the HTML id exists  and fills in the checkboxes set with the dynamic data
-        Boolean(checkboxContainerHTML) ? checkboxContainerHTML.innerHTML = checkboxSet : console.log("No HTML elements were found to update 😿");
-    }
+      checkboxSet += checkboxTemplate;
+    });
+    // Check if the HTML id exists  and fills in the checkboxes set with the dynamic data
+    Boolean(checkboxContainerHTML)
+      ? (checkboxContainerHTML.innerHTML = checkboxSet)
+      : console.log("No HTML elements were found to update 😿");
+  }
 
-    displayCheckboxes();
+  displayCheckboxes();
 
-    // Event filter
-    let filteredEvents = [];
-    const searchBar = document.querySelector("#searchBar");
-    const checkboxes = document.querySelectorAll(".form-checkbox");
+  // Event filter
+  let filteredEvents = [];
+  const searchBar = document.querySelector("#searchBar");
+  const checkboxes = document.querySelectorAll(".form-checkbox");
 
-    function filterEvents() {
-        const nameFilter = searchBar.value.trim().toLowerCase();
-        const categoryFilters = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+  function filterEvents() {
+    const nameFilter = searchBar.value.trim().toLowerCase();
+    const categoryFilters = Array.from(checkboxes)
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
 
-        filteredEvents = amazingEventsData.events.filter(event => {
-            const nameMatch = event.name.toLowerCase().includes(nameFilter);
-            const categoryMatch = categoryFilters.length === 0 || categoryFilters.includes(event.category);
-            return nameMatch && categoryMatch;
-        });
-    }
+    filteredEvents = amazingEventsData.events.filter((event) => {
+      const nameMatch = event.name.toLowerCase().includes(nameFilter);
+      const categoryMatch =
+        categoryFilters.length === 0 ||
+        categoryFilters.includes(event.category);
+      return nameMatch && categoryMatch;
+    });
+  }
 
-    // Display Event Cards
-    function displayContent() {
+  // Display Event Cards
+  function displayContent() {
+    let pastEventsGallery = "";
+    let upcomingEventsGallery = "";
+    const pastEventsGalleryHTML = document.getElementById("pastEventsGallery");
+    const upcomingEventsGalleryHTML = document.getElementById(
+      "upcomingEventsGallery"
+    );
+    const allEventsGalleryHTML = document.getElementById("allEventsGallery");
 
-        let pastEventsGallery = "";
-        let upcomingEventsGallery = "";
-        const pastEventsGalleryHTML = document.getElementById("pastEventsGallery");
-        const upcomingEventsGalleryHTML = document.getElementById("upcomingEventsGallery");
-        const allEventsGalleryHTML = document.getElementById("allEventsGallery");
+    filterEvents();
 
-        filterEvents();
-
-        // Loop that generates a dynamic template for each card
-        filteredEvents.forEach(event => {
-            const cardTemplate = `
+    // Loop that generates a dynamic template for each card
+    filteredEvents.forEach((event) => {
+      const cardTemplate = `
         <!-- Card -->
 
         <!-- Mobile -->
@@ -74,7 +82,7 @@ async function main() {
                     <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
                     <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
                     <button class="bg-secondary-500 text-white font-bold py-2 px-4 rounded-xl"><a
-                            href="../details.html?id=${event._id}">Details</a></button>
+                            href="../html/details.html?id=${event._id}">Details</a></button>
                 </div>
             </a>
         </div>
@@ -89,47 +97,46 @@ async function main() {
                 </h1>
                 <p class="text-lg text-light leading-relaxed font-semibold">${event.description}</p>
                 <p class="text-lg mt-2 text-green-400 font-bold">$${event.price}</p>
-            </div>`
-            if (amazingEventsData.currentDate > event.date) {
-                pastEventsGallery += cardTemplate;
-            }
-            else {
-                upcomingEventsGallery += cardTemplate;
-            }
-        });
-
-        let allEvents = pastEventsGallery + upcomingEventsGallery;
-
-        // Check if the HTML id exists, clears the innerHTML and fills in the gallery with the dynamic data
-        switch (true) {
-            case Boolean(pastEventsGalleryHTML):
-                pastEventsGalleryHTML.innerHTML = "";
-                pastEventsGalleryHTML.innerHTML = pastEventsGallery;
-                break;
-            case Boolean(upcomingEventsGalleryHTML):
-                upcomingEventsGalleryHTML.innerHTML = "";
-                upcomingEventsGalleryHTML.innerHTML = upcomingEventsGallery;
-                break;
-            case Boolean(allEventsGalleryHTML):
-                allEventsGalleryHTML.innerHTML = "";
-                allEventsGalleryHTML.innerHTML = allEvents;
-                break;
-            default:
-                console.log("No HTML elements found to update 😿");
-        }
-    }
-
-    displayContent();
-
-    // Event Listeners
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener("change", event => {
-            displayContent();
-        })
-    })
-    searchBar.addEventListener("input", event => {
-        displayContent();
+            </div>`;
+      if (amazingEventsData.currentDate > event.date) {
+        pastEventsGallery += cardTemplate;
+      } else {
+        upcomingEventsGallery += cardTemplate;
+      }
     });
+
+    let allEvents = pastEventsGallery + upcomingEventsGallery;
+
+    // Check if the HTML id exists, clears the innerHTML and fills in the gallery with the dynamic data
+    switch (true) {
+      case Boolean(pastEventsGalleryHTML):
+        pastEventsGalleryHTML.innerHTML = "";
+        pastEventsGalleryHTML.innerHTML = pastEventsGallery;
+        break;
+      case Boolean(upcomingEventsGalleryHTML):
+        upcomingEventsGalleryHTML.innerHTML = "";
+        upcomingEventsGalleryHTML.innerHTML = upcomingEventsGallery;
+        break;
+      case Boolean(allEventsGalleryHTML):
+        allEventsGalleryHTML.innerHTML = "";
+        allEventsGalleryHTML.innerHTML = allEvents;
+        break;
+      default:
+        console.log("No HTML elements found to update 😿");
+    }
+  }
+
+  displayContent();
+
+  // Event Listeners
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", (event) => {
+      displayContent();
+    });
+  });
+  searchBar.addEventListener("input", (event) => {
+    displayContent();
+  });
 }
 
 main();
