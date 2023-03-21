@@ -55,5 +55,98 @@ async function main() {
     `;
   document.getElementById("statisticsTable").innerHTML =
     statisticsTableTemplate;
+
+  /* Stats by categories */
+  // Use spread constructor and Set() operator to fill the array with unique categories
+  const upcomingEventsCategories = [
+    ...new Set(upcomingEvents.map((event) => event.category)),
+  ];
+  const pastEventsCategories = [
+    ...new Set(pastEvents.map((event) => event.category)),
+  ];
+
+  const upcomingEventsStats = [];
+  upcomingEventsCategories.forEach((category) => {
+    const categoryEvents = upcomingEvents.filter(
+      (event) => event.category === category
+    );
+    const categoryRevenues = categoryEvents.reduce(
+      (total, event) => total + event.revenues,
+      0
+    );
+    const categoryAttendance = categoryEvents.reduce(
+      (total, event) => total + event.estimate,
+      0
+    );
+    const categoryCapacity = categoryEvents.reduce(
+      (total, event) => total + event.capacity,
+      0
+    );
+    const categoryAttendancePercentage = (
+      (categoryAttendance * 100) /
+      categoryCapacity
+    ).toFixed(2);
+    upcomingEventsStats.push({
+      category,
+      revenues: categoryRevenues,
+      percentage: categoryAttendancePercentage,
+    });
+  });
+
+  let upcomingEventsStatsTable = "";
+  upcomingEventsStats.forEach((event) => {
+    const statisticsByCategoryTemplate = `
+    <tr class="odd:bg-black/10 even:bg-black/20">
+      <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">${event.category}</td>
+      <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">${event.revenues}</td>
+      <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">${event.percentage}%</td>
+    </tr>`;
+
+    upcomingEventsStatsTable += statisticsByCategoryTemplate;
+  });
+  document.getElementById("upcomingEventsStatsTableHTML").innerHTML =
+    upcomingEventsStatsTable;
+
+  const pastEventsStats = [];
+  pastEventsCategories.forEach((category) => {
+    const categoryEvents = pastEvents.filter(
+      (event) => event.category === category
+    );
+    const categoryRevenues = categoryEvents.reduce(
+      (total, event) => total + event.revenues,
+      0
+    );
+    const categoryAttendance = categoryEvents.reduce(
+      (total, event) => total + event.assistance,
+      0
+    );
+    const categoryCapacity = categoryEvents.reduce(
+      (total, event) => total + event.capacity,
+      0
+    );
+    const categoryAttendancePercentage = (
+      (categoryAttendance * 100) /
+      categoryCapacity
+    ).toFixed(2);
+    pastEventsStats.push({
+      category,
+      revenues: categoryRevenues,
+      percentage: categoryAttendancePercentage,
+    });
+  });
+
+  let pastEventsStatsTable = "";
+  pastEventsStats.forEach((event) => {
+    const statisticsByCategoryTemplate = `
+    <tr class="odd:bg-black/10 even:bg-black/20">
+      <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">${event.category}</td>
+      <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">${event.revenues}</td>
+      <td class="p-1 hover:font-semibold hover:text-primary-300 hover:bg-white/5 transition-all">${event.percentage}%</td>
+    </tr>`;
+
+    pastEventsStatsTable += statisticsByCategoryTemplate;
+  });
+  document.getElementById("pastEventsStatsTableHTML").innerHTML =
+    pastEventsStatsTable;
 }
 main();
