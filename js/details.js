@@ -7,7 +7,7 @@ async function main() {
   const cardTemplate = `
     <div id="details-container" class="max-w-5xl">
     <div
-        class="flex flex-col md:flex-row rounded-lg shadow-lg overflow-hidden border-2 border-secondary-300 mx-5 my-5">
+        class="flex flex-col md:flex-row rounded-lg shadow-lg overflow-hidden">
         <!-- Image -->
         <img src="${
           event.image
