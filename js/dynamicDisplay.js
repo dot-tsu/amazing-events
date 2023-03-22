@@ -67,6 +67,7 @@ async function main() {
     filterEvents();
 
     // Loop that generates a dynamic template for each card
+    
     filteredEvents.forEach((event) => {
       const cardTemplate = `
         <!-- Card -->
@@ -104,9 +105,16 @@ async function main() {
         upcomingEventsGallery += cardTemplate;
       }
     });
-
     let allEvents = pastEventsGallery + upcomingEventsGallery;
-
+    
+    if(filteredEvents.length === 0){
+      const notFoundTemplate = `
+      <p class="text-4xl font-bold text-light">There is not an event related to your search 😿</p>
+      `;
+      pastEventsGallery = notFoundTemplate;
+      upcomingEventsGallery = notFoundTemplate;
+      allEvents = notFoundTemplate;
+    }
     // Check if the HTML id exists, clears the innerHTML and fills in the gallery with the dynamic data
     switch (true) {
       case Boolean(pastEventsGalleryHTML):
@@ -137,6 +145,7 @@ async function main() {
   searchBar.addEventListener("input", (event) => {
     displayContent();
   });
+
 }
 
 main();
