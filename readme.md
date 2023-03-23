@@ -35,7 +35,7 @@ then open index.html or run a live server with VSCode
 
 **Responsive design:** Ensure that the application layout and user interface is optimized for all screen sizes, including mobile devices and tablets.
 
-**Interactive event filtering:** Allow users to filter the event data based on various criteria, such as date range, event type, or location.
+**Interactive event filtering:** Allow users to filter the event data based on various criteria, such as category or event's name.
 
 **Event detail view:** Provide a detailed view of individual events that includes additional information such as event description, attendees, and category.
 
