@@ -954,6 +954,10 @@ video {
   min-height: 82vh;
 }
 
+.min-h-\[83vh\] {
+  min-height: 83vh;
+}
+
 .w-1 {
   width: 0.25rem;
 }
