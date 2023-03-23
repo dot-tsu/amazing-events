@@ -862,20 +862,96 @@ video {
   height: 16rem;
 }
 
-.min-h-\[70vh\] {
-  min-height: 70vh;
+.h-full {
+  height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.h-\[72vh\] {
+  height: 72vh;
+}
+
+.h-\[80vh\] {
+  height: 80vh;
+}
+
+.h-\[85vh\] {
+  height: 85vh;
+}
+
+.h-\[83vh\] {
+  height: 83vh;
+}
+
+.h-\[82vh\] {
+  height: 82vh;
+}
+
+.h-\[81vh\] {
+  height: 81vh;
+}
+
+.h-\[10vh\] {
+  height: 10vh;
+}
+
+.h-\[5vh\] {
+  height: 5vh;
+}
+
+.h-\[6vh\] {
+  height: 6vh;
+}
+
+.h-\[8vh\] {
+  height: 8vh;
+}
+
+.h-\[7vh\] {
+  height: 7vh;
+}
+
+.h-\[vh\] {
+  height: vh;
+}
+
+.h-\[6\.5vh\] {
+  height: 6.5vh;
+}
+
+.h-\[4vh\] {
+  height: 4vh;
+}
+
+.max-h-\[72vh\] {
+  max-height: 72vh;
+}
+
+.max-h-\[10vh\] {
+  max-height: 10vh;
+}
+
+.max-h-\[4vh\] {
+  max-height: 4vh;
+}
+
+.max-h-\[6vh\] {
+  max-height: 6vh;
+}
+
+.min-h-\[72vh\] {
+  min-height: 72vh;
 }
 
 .min-h-\[90vh\] {
   min-height: 90vh;
 }
 
-.min-h-\[75vh\] {
-  min-height: 75vh;
-}
-
-.min-h-\[72vh\] {
-  min-height: 72vh;
+.min-h-\[82vh\] {
+  min-height: 82vh;
 }
 
 .w-1 {
@@ -2052,6 +2128,11 @@ video {
   padding-bottom: 1.25rem;
 }
 
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -2070,6 +2151,10 @@ video {
 
 .pt-3 {
   padding-top: 0.75rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-left {
