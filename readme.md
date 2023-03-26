@@ -29,7 +29,7 @@ then open index.html or run a live server with VSCode
 
 ## Features
 
-**Dynamic event charts and statistics:** Connect to an external API and dynamically render event cards and statistics based on the data returned by the API. This feature allows users to quickly visualize and analyze event data in real-time.
+**Dynamic event cards and statistics:** Connect to an external API and dynamically render event cards and statistics based on the data returned by the API. This feature allows users to quickly visualize and analyze event data in real-time.
 
 **API error handling:** If the external API is not available or returns an error, the application logs the error in the console and automatically switches to a local JSON file to retrieve the event data. This ensures that users can still view and interact with the event cards and statistics even if the API is temporarily unavailable.
 
