@@ -46,13 +46,7 @@ you can download them to see how the project was progressing.
 
 ## Contribution Guidelines
 
-If you would like to contribute to this project, please follow these guidelines:
-
-* All code contributions should be submitted via pull requests.
-* Please ensure that your code adheres to the project's coding style and conventions.
-* If you are contributing new features or significant changes, please create an issue to discuss the changes beforehand.
-* If you notice any bugs or issues, please create an issue and provide a detailed description of the problem.
-* Credit for any third-party assets used in this project should be included in the code comments or in this README file.
+I'm no longer receiving contributions.
 
 **Note:** The style for the checkboxes used in this project was done by Voxybuns. All other styling, logic, and code was done 100% by me.
 
