@@ -1,4 +1,4 @@
-# Amazing Events with Vanilla JS
+# Amazing Events
 
 ["Amazing Events"](https://tsu.is-a.dev/amazing-events/) is a responsive event page project developed for a MindHub Frontend Bootcamp. The project connects to an API to retrieve event data, if it can't, uses a local JSON.
 The page is designed to provide a user-friendly experience for browsing and searching for events.
