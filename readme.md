@@ -1,7 +1,9 @@
 # Amazing Events with Vanilla JS
 
-["Amazing Events"](https://tsuramii.github.io/AmazingEvents_Di-Marco/html/index.html) is a responsive event page project developed for a MindHub Frontend Bootcamp. The project connects to an API to retrieve event data, if it can't, uses a local JSON.
+["Amazing Events"](https://tsu.is-a.dev/amazing-events/) is a responsive event page project developed for a MindHub Frontend Bootcamp. The project connects to an API to retrieve event data, if it can't, uses a local JSON.
 The page is designed to provide a user-friendly experience for browsing and searching for events.
+
+⚠️ Status: No further updates or improvements will be made. The project is now archived for reference.
 
 ## Technologies used
 
@@ -43,10 +45,6 @@ then open index.html or run a live server with VSCode
 
 In the branches are the tasks that were given to me during the bootcamp,
 you can download them to see how the project was progressing.
-
-## Contribution Guidelines
-
-I'm no longer receiving contributions.
 
 **Note:** The style for the checkboxes used in this project was done by Voxybuns. All other styling, logic, and code was done 100% by me.
 
